@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>XSS CSRF Defense Demo</title>
+</head>
+
+<body>
+
+<h1>Secure Comment Board</h1>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<textarea name="text"></textarea>
+
+<br>
+
+<button type="submit">
+Submit Comment
+</button>
+
+</form>
+
+<h2>Comments</h2>
+
+{% for comment in comments %}
+<p>{{ comment.text }}</p>
+{% empty %}
+<p>No comments yet.</p>
+{% endfor %}
+
+</body>
+
+</html>
